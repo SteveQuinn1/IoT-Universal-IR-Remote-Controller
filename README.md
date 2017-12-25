@@ -16,4 +16,4 @@ By Steve Quinn
 
 Written to support the following Instructable;
 
-TBA
+https://www.instructables.com/id/IR-Remote-Control-Via-IoT-Part-10-IoT-Home-Automat
