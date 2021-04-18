@@ -53,6 +53,8 @@
 // 27/09/17 : 14    Version for automated testing. Added handler for Err No 14 : Compound number exceeds max digits. Kicked the arse out of the testing using Python test script engine
 // 30/09/17 : 15    Added handler for Err No 15. Button repeats out of bounds 0 or > 255, and Err No. 16 Delay Between Button Repeats out of bounds 0 or > 65535. Impacts irRemoteCmdPartRawTopic 
 // 21/10/17 : 16    Extended reset delay for IR remote device to 2 seconds and ensured all debug tracing can be removed without causing a crash. Increased delay in 'void doIRDeviceUpdate(void)' from 10mS to 20mS after call to Wire.endTransmission();
+// 11/09/18 : 17    Fixed fileRead bool type issue.
+// 17/04/21 : 18    Updated IRCodes.h for IR control of SkyQ box and added uint32_t fix for 32bit raw data
 //
 // Start up sequence
 // -----------------
@@ -120,7 +122,7 @@
 // 
 
    
-//.#define DEBUG_GENERAL      // Undefine this for general debug information via the serial port. Note, you must deploy with this undefined as your network security parameters will be sent to serial port
+//..#define DEBUG_GENERAL      // Undefine this for general debug information via the serial port. Note, you must deploy with this undefined as your network security parameters will be sent to serial port
 //#define DEBUG_WEB          // Undefine this for comprehensive debug information on web interface via the serial port. Requires DEBUG_GENERAL.
 //#define DEBUG_MDNS         // Undefine this for comprehensive debug information on mDNS support via the serial port. Requires DEBUG_GENERAL.
 //#define DEBUG_TIMER        // Undefine this for timer debug information via the serial port. Requires DEBUG_GENERAL.
@@ -135,8 +137,8 @@
 //#define DEBUG_PARSER       // Undefine this for logging StringParser function. Requires DEBUG_GENERAL.  
 //.#define DEBUG_ALVAL        // Undefine this for read Alias/Value function. Requires DEBUG_GENERAL.  
 //.#define DEBUG_REM_COMMANDS // Undefine this for remote command debug. Requires DEBUG_GENERAL.  
-//.#define DEBUG_IRD_COMMANDS // Undefine this to see the commands issued to the IR Device. Requires DEBUG_GENERAL.  
-//.#define DEBUG_IRD_CALLBACK // Undefine this to debug the IR Device callback function. Requires DEBUG_GENERAL.  
+//..#define DEBUG_IRD_COMMANDS // Undefine this to see the commands issued to the IR Device. Requires DEBUG_GENERAL.  
+//..#define DEBUG_IRD_CALLBACK // Undefine this to debug the IR Device callback function. Requires DEBUG_GENERAL.  
 //.#define DEBUG_IRDEV_TIMER  // Undefine this to get debug on the IR Device specific timers. Requires DEBUG_GENERAL.
 //.#define DEBUG_SYSTEM_STATES_EVENTS // Undefine this to debug the doRemoteCommandUpdate function. Requires DEBUG_GENERAL.
 //.#define DEBUG_IR_DEVICE_STATES_EVENTS // Undefine this to debug the doIRDeviceUpdate function. Requires DEBUG_GENERAL.
@@ -262,7 +264,7 @@ boolean bBrokerPresent    = false;
 #define MQTT_VERSION MQTT_VERSION_3_1
 
 #define MQTT_BROKER_IP_STRING_MAX_LEN           30
-#define MQTT_BROKER_IP_DEFAULT                  "192.168.1.2"
+#define MQTT_BROKER_IP_DEFAULT                  "192.168.1.44"
 #define MQTT_BROKER_PORT_DEFAULT                ((int)1883)
 #define STA_NETWORK_SSID_DEFAULT                "IRREMSIM"
 #define STA_NETWORK_PASSWORD_DEFAULT            "PASSWORD"
@@ -2632,7 +2634,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
           if (isHex(strData))
           {
             char *ptr;
-            ui32Data = (uint32_t) strtol(strData, &ptr, 16);
+            ui32Data = (uint32_t) strtoll(strData, NULL, 16);
+            //ui32Data = (uint32_t) strtol(strData, &ptr, 16);
           } else { // Must be numerical
             String sui32Data(strData);
             ui32Data = (uint32_t) sui32Data.toInt();
@@ -2873,7 +2876,7 @@ int fileRead(File f, FileVarInstance *fviArray, int iTotalParametersToRead) {
                 *((int *)(fviArray[i].ptrVar)) = s.toInt();
                 break;
         case FILE_VAR_INSTANCE_TYPE_BOOL :
-                *((int *)(fviArray[i].ptrVar)) = (s.toInt()==0?false:true);
+                *((bool *)(fviArray[i].ptrVar)) = (s.toInt()==0?false:true);
                 break;
         default : // Unknown data type
                 return 1;

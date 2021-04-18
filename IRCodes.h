@@ -8,7 +8,8 @@ extern "C" {
 typedef enum {
    eREMOTE_CONTROL_TYPES_SKY    = 0,
    eREMOTE_CONTROL_TYPES_SONYSB = 1,
-   eREMOTE_CONTROL_TYPES_SONYTV = 2
+   eREMOTE_CONTROL_TYPES_SONYTV = 2,
+   eREMOTE_CONTROL_TYPES_SKYQ   = 3
 } eREMOTE_CONTROL_TYPES;
 
 typedef enum {
@@ -104,7 +105,42 @@ remoteControlButtonType remoteControlButtonCollectionSonyTV[] = {
   {(char *) "Sel",   (byte)eREMOTE_CONTROL_CODING_SCHEME_SONY, (uint32_t)0xA70, (byte)12, (byte)4, (byte)26, (byte)1, (uint16_t)400, (byte)0x00}
 };
 
-
+//remoteControlButtonType remoteControlButtonCollectionSkyQ[] PROGMEM = {
+remoteControlButtonType remoteControlButtonCollectionSkyQ[] = {
+  {(char *) "Sky",        (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A80, (byte)32, (byte)3, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "OnOff",      (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A0C, (byte)32, (byte)3, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Search",     (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A7E, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Rewind",     (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A3D, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "PlayPause",  (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A3E, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Forward",    (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A28, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Up",         (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A58, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Dn",         (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A59, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Left",       (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A5A, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Right",      (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A5B, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Select",     (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A5C, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "BackReturn", (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A83, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Home",       (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081ACC, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Ellipsis",   (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081AF5, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Info",       (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081ACB, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "ChanUp",     (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A20, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "ChanDn",     (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A21, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Record",     (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A40, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Red",        (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A6D, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Green",      (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A6E, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Yellow",     (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A6F, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Blue",       (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A70, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "1",          (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A01, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "2",          (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A02, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "3",          (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A03, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "4",          (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A04, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "5",          (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A05, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "6",          (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A06, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "7",          (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A07, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "8",          (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A08, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "9",          (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A09, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "0",          (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A00, (byte)32, (byte)2, (byte)124, (byte)1, (uint16_t)400, (byte)0x00},
+  {(char *) "Help",       (byte)eREMOTE_CONTROL_CODING_SCHEME_RC6,  (uint32_t)0xC0081A81, (byte)32, (byte)3, (byte)124, (byte)1, (uint16_t)400, (byte)0x00}
+};
 
 //remoteControlType remoteControls[] PROGMEM = {
 remoteControlType remoteControls[] = {
@@ -128,6 +164,13 @@ remoteControlType remoteControls[] = {
     (uint16_t)40, // not used
     (remoteControlButtonType *) remoteControlButtonCollectionSonyTV,
     (uint16_t) (sizeof(remoteControlButtonCollectionSonyTV)/sizeof(remoteControlButtonType))
+  },
+  {
+    (char *)"SkyQ",
+    (byte) eREMOTE_CONTROL_TYPES_SKYQ,
+    (uint16_t)36, // not used
+    (remoteControlButtonType *) remoteControlButtonCollectionSkyQ,
+    (uint16_t) (sizeof(remoteControlButtonCollectionSkyQ)/sizeof(remoteControlButtonType))
   }
 };
 
